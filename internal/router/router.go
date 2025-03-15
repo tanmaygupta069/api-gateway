@@ -53,10 +53,10 @@ func GetRouter() *gin.Engine {
 		})
 		return
 	})
-	router.POST("/login", authService.Login)
-	router.POST("/signup", authService.Signup)
-	router.GET("/stock",orderService.GetStockPrice)
-	router.PUT("/order",orderService.CompleteOrder)
+	router.POST("/login",middleware.KillSwitch(config.LOGIN_KILL_SWITCH), authService.Login)
+	router.POST("/signup", middleware.KillSwitch(config.SIGNUP_KILL_SWITCH),authService.Signup)
+	router.GET("/stock",middleware.KillSwitch(config.GET_CUR_PRICE_KILL_SWITCH),orderService.GetStockPrice)
+	router.PUT("/order",middleware.KillSwitch(config.COMPLETE_ORDER_KILL_SWITCH),orderService.CompleteOrder)
 
 	auth := router.Group("/auth")
 	{

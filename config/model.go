@@ -4,6 +4,7 @@ type Config struct{
 	ServerConfig ServerConfig
 	RateLimiterConfig RateLimiterConfig
 	GrpcServerConfig GrpcServerConfig
+	KillSwitchMap map[string]bool
 }
 
 type ServerConfig struct{

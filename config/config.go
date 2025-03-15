@@ -8,6 +8,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
+const (
+	SIGNUP_KILL_SWITCH = "SIGNUP_KILL_SWITCH"
+	LOGIN_KILL_SWITCH = "LOGIN_KILL_SWITCH"
+	PLACE_ORDER_KILL_SWITCH = "PLACE_ORDER_KILL_SWITCH"
+	CANCEL_ORDER_KILL_SWITCH = "CANCEL_ORDER_KILL_SWITCH"
+	GET_ORDER_HISTORY_KILL_SWITCH = "GET_ORDER_HISTORY_KILL_SWITCH"
+	GET_CUR_PRICE_KILL_SWITCH = "GET_CUR_PRICE_KILL_SWITCH"
+	COMPLETE_ORDER_KILL_SWITCH = "COMPLETE_ORDER_KILL_SWITCH"
+	GET_HOLDING_KILL_SWITCH = "GET_HOLDING_KILL_SWITCH"
+)
+
 func GetConfig() (*Config, error) {
 	err := godotenv.Load()
 	if err != nil {
@@ -32,6 +43,16 @@ func GetConfig() (*Config, error) {
 				Host: getEnv("ORDER_GRPC_HOST"),
 			},
 		},
+		KillSwitchMap: map[string]bool{
+			LOGIN_KILL_SWITCH : getEnvBool(LOGIN_KILL_SWITCH),
+			SIGNUP_KILL_SWITCH: getEnvBool(SIGNUP_KILL_SWITCH),
+			CANCEL_ORDER_KILL_SWITCH:getEnvBool(CANCEL_ORDER_KILL_SWITCH),
+			COMPLETE_ORDER_KILL_SWITCH:getEnvBool(COMPLETE_ORDER_KILL_SWITCH),
+			GET_CUR_PRICE_KILL_SWITCH:getEnvBool(GET_CUR_PRICE_KILL_SWITCH),
+			GET_HOLDING_KILL_SWITCH:getEnvBool(GET_HOLDING_KILL_SWITCH),
+			GET_ORDER_HISTORY_KILL_SWITCH:getEnvBool(GET_ORDER_HISTORY_KILL_SWITCH),
+			PLACE_ORDER_KILL_SWITCH:getEnvBool(PLACE_ORDER_KILL_SWITCH),
+		},
 	}
 	return config, nil
 }
@@ -43,6 +64,15 @@ func getEnv(key string) string {
 	fmt.Printf("\n%s not found in .env\n", key)
 	return ""
 }
+
+func getEnvBool(key string)bool{
+	val, _ := os.LookupEnv(key)
+		if val == "true"{
+			return true
+		}else{
+			return false
+		}
+	}
 
 func getEnvInt(key string, Default int) int {
 	if val, exisit := os.LookupEnv(key); exisit {
