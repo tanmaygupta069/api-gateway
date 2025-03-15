@@ -11,6 +11,7 @@ The system is designed with the following microservices:
 
 ### Architecture Diagram
 
+![architecture diagram](https://raw.githubusercontent.com/tanmaygupta069/api-gateway/refs/heads/main/assets/stock-trading-architecture.png)
 
 
 ## Database Choices
