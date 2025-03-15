@@ -1,0 +1,141 @@
+{
+  "info": {
+    "_postman_id": "c3a4f87b-9e3c-418a-94f5-83497fa58136",
+    "name": "api-gateway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26078247",
+	"baseURL":"localhost:8080"
+  },
+  "item": [
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"tanmaygupta1102@gmail.com\",\r\n    \"password\":\"Ironman43!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/login",
+          "host": ["{{baseURL}}"],
+          "path": ["login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"tanmaygupta123@gmail.com\",\r\n    \"password\":\"tanmay1233\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/signup",
+          "host": ["{{baseURL}}"],
+          "path": ["signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "placeOrder",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"orderType\": \"buy\",\r\n    \"quantity\": 12,\r\n    \"symbol\": \"IBM\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/auth/order",
+          "host": ["{{baseURL}}"],
+          "path": ["auth", "order"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "cancelOrder",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"orderId\":\"655f67df-0e0b-4180-ace2-8a61375940bb\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/auth/order",
+          "host": ["{{baseURL}}"],
+          "path": ["auth", "order"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getOrderHistory",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/auth/orders",
+          "host": ["{{baseURL}}"],
+          "path": ["auth", "orders"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getCurrentPrice",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "completeOrder",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "getHoldings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/auth/holdings",
+          "host": ["{{baseURL}}"],
+          "path": ["auth", "holdings"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
